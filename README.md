@@ -1,100 +1,74 @@
 # Бударин Виктор
 
-
 В проекте реализованы следующие тесты:
 
-Проверка инициализации атрибутов конструктора
-test_constructor_initializes_attributes — проверяет, что при создании объекта BooksCollector атрибуты (books_genre, favorites, genre, genre_age_rating) инициализируются корректно.
+Список реализованных тестов
+test_add_new_book_add_two_books — проверяет добавление двух книг в коллекцию.
 
-Добавление двух книг
-test_add_new_book_add_two_books — убеждается, что после добавления двух книг словарь books_genre содержит ровно 2 записи.
+test_add_new_book_valid_name — проверяет добавление книги с валидным именем.
 
-Добавление книги с корректным названием
-test_add_new_book_valid_name — проверяет, что книга с валидным именем добавляется в books_genre, а её жанр по умолчанию — пустая строка.
+test_add_new_book_boundary_values_valid (с параметризацией) — проверяет граничные значения валидной длины имени (1 и 40 символов).
 
-Добавление книги с названием из 1 символа
-test_add_new_book_valid_name_1_symbol_added — подтверждает, что книга с односимвольным названием корректно добавляется.
+test_add_new_book_boundary_values_invalid (с параметризацией) — проверяет невалидные длины имени (0 и 41 символ).
 
-Добавление книги с названием из 40 символов
-test_add_new_book_valid_name_40_symbols_added — проверяет добавление книги с максимально допустимой длиной названия (40 символов).
+test_add_new_book_duplicate_not_added — проверяет, что дубликат книги не добавляется.
 
-Попытка добавить книгу с пустым названием
-test_add_new_book_not_valid_name_0_symbols_not_added — убеждается, что книга с пустым именем не добавляется в словарь.
+test_set_book_genre_valid_added (с параметризацией) — проверяет установку валидных жанров для существующих книг.
 
-Попытка добавить книгу с названием из 41 символа
-test_add_new_book_not_valid_name_41_symbols_not_added — проверяет, что название длиннее 40 символов не принимается.
+test_set_book_genre_invalid_book_not_added — проверяет попытку установить жанр для несуществующей книги.
 
-Попытка добавить дубликат книги
-test_add_new_book_duplicate_not_added — гарантирует, что повторная попытка добавить уже существующую книгу не увеличивает размер словаря.
+test_set_book_genre_invalid_genre_not_added — проверяет попытку установить невалидный жанр.
 
-Установка валидного жанра для книги
-test_set_book_genre_valid_added (с параметризацией) — проверяет корректное присвоение жанров («Фантастика», «Ужасы», «Детективы») существующим книгам.
+test_get_book_genre_success — проверяет получение жанра существующей книги.
 
-Попытка установить жанр для несуществующей книги
-test_set_book_genre_invalid_book_not_added — убеждается, что жанр не присваивается книге, отсутствующей в books_genre.
+test_get_books_genre_success — проверяет возврат полного словаря books_genre.
 
-Попытка установить недопустимый жанр
-test_set_book_genre_invalid_genre_not_added — проверяет, что жанры, не входящие в список допустимых (genre), не сохраняются.
+test_get_books_with_specific_genre_success — проверяет фильтрацию книг по жанру.
 
-Получение книг определённого жанра
-test_get_books_with_specific_genre_success — тестирует метод get_books_with_specific_genre, который возвращает список книг заданного жанра.
+test_get_books_for_children_success — проверяет фильтрацию книг для детей (без возрастного рейтинга).
 
-Получение полного словаря книг с жанрами
-test_get_books_genre_success — проверяет, что метод get_books_genre возвращает актуальный словарь books_genre.
+test_add_book_in_favorites_valid_added — проверяет добавление книги в избранное.
 
-Получение детских книг
-test_get_books_for_children_success — убеждается, что метод get_books_for_children возвращает только книги, не входящие в возрастные ограничения (genre_age_rating).
+test_add_book_in_favorites_duplicate_1_added — проверяет, что дубликат в избранное не добавляется.
 
-Добавление книги в избранное
-test_add_book_in_favorites_valid_added — проверяет, что существующая книга успешно добавляется в список favorites.
+test_add_book_in_favorites_invalid_not_added — проверяет попытку добавить в избранное несуществующую книгу.
 
-Попытка добавить дубликат в избранное
-test_add_book_in_favorites_duplicate_1_added — гарантирует, что повторное добавление книги в избранное не приводит к дублированию.
+test_delete_book_from_favorites_success — проверяет удаление книги из избранного.
 
-Попытка добавить несуществующую книгу в избранное
-test_add_book_in_favorites_invalid_not_added — проверяет, что книги, отсутствующие в books_genre, не могут быть добавлены в избранное.
+test_delete_book_from_favorites_not_in_list_success — проверяет попытку удалить из избранного несуществующую книгу.
 
-Удаление книги из избранного
-test_delete_book_from_favorites_success — тестирует корректное удаление книги из списка favorites.
+test_get_list_of_favorites_books_success — проверяет корректность списка избранных книг.
 
-Попытка удалить несуществующую книгу из избранного
-test_delete_book_from_favorites_not_in_list_success — убеждается, что удаление отсутствующей книги не вызывает ошибок и не изменяет список.
-
-Получение списка избранных книг
-test_get_list_of_favorites_books_success — проверяет, что метод get_list_of_favorites_books возвращает актуальный список favorites с правильным количеством элементов.
-
-оценка покрытия 85-90%
+Оценка покрытия ~ 95%
 
 Ниже результаты тестов:
 
 ================================================== test session starts ===================================================
 platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Admin\AppData\Local\Python\pythoncore-3.14-64\python.exe
 cachedir: .pytest_cache
-rootdir: C:\qa_python
+rootdir: C:\sprint_4_Budarin
 plugins: cov-7.0.0
-collected 22 items
+collected 21 items
 
-tests.py::TestBooksCollector::test_constructor_initializes_attributes PASSED                                        [  4%] 
-tests.py::TestBooksCollector::test_add_new_book_add_two_books PASSED                                                [  9%] 
-tests.py::TestBooksCollector::test_add_new_book_valid_name PASSED                                                   [ 13%] 
-tests.py::TestBooksCollector::test_add_new_book_valid_name_1_symbol_added PASSED                                    [ 18%] 
-tests.py::TestBooksCollector::test_add_new_book_valid_name_40_symbols_added PASSED                                  [ 22%] 
-tests.py::TestBooksCollector::test_add_new_book_not_valid_name_0_symbols_not_added PASSED                           [ 27%] 
-tests.py::TestBooksCollector::test_add_new_book_not_valid_name_41_symbols_not_added PASSED                          [ 31%] 
-tests.py::TestBooksCollector::test_add_new_book_duplicate_not_added PASSED                                          [ 36%] 
-tests.py::TestBooksCollector::test_set_book_genre_valid_added[\u0413\u0430\u0440\u0440\u0438 \u041f\u043e\u0442\u0442\u0435\u0440-\u0424\u0430\u043d\u0442\u0430\u0441\u0442\u0438\u043a\u0430] PASSED [ 40%]
-tests.py::TestBooksCollector::test_set_book_genre_valid_added[\u041e\u043d\u043e-\u0423\u0436\u0430\u0441\u044b] PASSED [ 45%]
-tests.py::TestBooksCollector::test_set_book_genre_valid_added[\u0428\u0435\u0440\u043b\u043e\u043a \u0425\u043e\u043b\u043c\u0441-\u0414\u0435\u0442\u0435\u043a\u0442\u0438\u0432\u044b] PASSED [ 50%]
-tests.py::TestBooksCollector::test_set_book_genre_invalid_book_not_added PASSED                                     [ 54%] 
-tests.py::TestBooksCollector::test_set_book_genre_invalid_genre_not_added PASSED                                    [ 59%] 
-tests.py::TestBooksCollector::test_get_books_with_specific_genre_success PASSED                                     [ 63%]
-tests.py::TestBooksCollector::test_get_books_genre_success PASSED                                                   [ 68%] 
-tests.py::TestBooksCollector::test_get_books_for_children_success PASSED                                            [ 72%] 
-tests.py::TestBooksCollector::test_add_book_in_favorites_valid_added PASSED                                         [ 77%] 
-tests.py::TestBooksCollector::test_add_book_in_favorites_duplicate_1_added PASSED                                   [ 81%] 
-tests.py::TestBooksCollector::test_add_book_in_favorites_invalid_not_added PASSED                                   [ 86%] 
+tests.py::TestBooksCollector::test_add_new_book_add_two_books PASSED                                                [  4%]
+tests.py::TestBooksCollector::test_add_new_book_valid_name PASSED                                                   [  9%] 
+tests.py::TestBooksCollector::test_add_new_book_boundary_values_valid[a] PASSED                                     [ 14%] 
+tests.py::TestBooksCollector::test_add_new_book_boundary_values_valid[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 19%]
+tests.py::TestBooksCollector::test_add_new_book_boundary_values_invalid[] PASSED                                    [ 23%] 
+tests.py::TestBooksCollector::test_add_new_book_boundary_values_invalid[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 28%]
+tests.py::TestBooksCollector::test_add_new_book_duplicate_not_added PASSED                                          [ 33%] 
+tests.py::TestBooksCollector::test_set_book_genre_valid_added[\u0413\u0430\u0440\u0440\u0438 \u041f\u043e\u0442\u0442\u0435\u0440-\u0424\u0430\u043d\u0442\u0430\u0441\u0442\u0438\u043a\u0430] PASSED [ 38%]
+tests.py::TestBooksCollector::test_set_book_genre_valid_added[\u041e\u043d\u043e-\u0423\u0436\u0430\u0441\u044b] PASSED [ 42%]
+tests.py::TestBooksCollector::test_set_book_genre_invalid_genre_not_added PASSED                                    [ 52%] 
+tests.py::TestBooksCollector::test_get_book_genre_success PASSED                                                    [ 57%] 
+tests.py::TestBooksCollector::test_get_books_genre_success PASSED                                                   [ 61%] 
+tests.py::TestBooksCollector::test_get_books_with_specific_genre_success PASSED                                     [ 66%] 
+tests.py::TestBooksCollector::test_get_books_for_children_success PASSED                                            [ 71%] 
+tests.py::TestBooksCollector::test_add_book_in_favorites_valid_added PASSED                                         [ 76%] 
+tests.py::TestBooksCollector::test_add_book_in_favorites_duplicate_1_added PASSED                                   [ 80%] 
+tests.py::TestBooksCollector::test_add_book_in_favorites_invalid_not_added PASSED                                   [ 85%] 
 tests.py::TestBooksCollector::test_delete_book_from_favorites_success PASSED                                        [ 90%] 
 tests.py::TestBooksCollector::test_delete_book_from_favorites_not_in_list_success PASSED                            [ 95%] 
 tests.py::TestBooksCollector::test_get_list_of_favorites_books_success PASSED                                       [100%] 
 
-==================================== 22 passed in 0.15s =================================== 
+=========================================== 21 passed in 0.16s ===========================================
